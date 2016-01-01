@@ -3,7 +3,8 @@ Proyecto orientado al control de casas inteligentes
   
 
 
-# Como funciona
+Como funciona
+-----------
 
 Tenemos el control de una casa el cual entre varias de las cosas a controlar son
   * **Acceso al interior por medio de una contraseña** (por medio de un teclado se captara una contraseña previamente establecida para que habilite el servomotor y pueda abrir la puerta)
@@ -12,7 +13,8 @@ Tenemos el control de una casa el cual entre varias de las cosas a controlar son
   * **Encendido de la alarma al detectar intrusos** (Provisto de 2 sensores de contacto en 2 ventanas[en complementacion de una compuerta or 7432 solo habra  1 entrada al arduino] y otra sensor de contacto en el cerco electrico le permitiran al arduino encender la alarma en caso de que se quieran abrir las ventanas o se quiera burlar el cerco electrico )
   * 
 
-# Proyecto arduino
+Proyecto arduino
+-----------
 
 [Aqui](https://github.com/Hernank/Control_domotico_xmas/tree/master/arduino_source/arduinomicro) se podra encontrar los recursos correspondientes para el grabado en el arduino consta de varias librerias, que en el caso de no tenerlas aqui les dejo los links 
   * [Password](http://playground.arduino.cc/uploads/Code/Password.zip).
@@ -21,13 +23,13 @@ Tenemos el control de una casa el cual entre varias de las cosas a controlar son
 Esto hara que funcione como webserver en la ip 192.168.0.20 puerto 80
 
 Proyecto django
-=======
+-----------
 
 El proyecto django es una [aplicacion](https://github.com/Hernank/Control_domotico_xmas/tree/master/serverlocal "") al estilo web appp diseñado con [MATERIAL DESIGN LITE](http://www.getmdl.io/) que le da la posibilidad de tener una apariencia de web app totalmente adaptable a cualquier tipo de dispositivo. En los recursos se la identifica como [server local](https://github.com/Hernank/Control_domotico_xmas/tree/master/serverlocal )
 
 
 Aplicacion
-=======
+-----------
 La aplicacion es completamente repsonsive acontinuacion unos screenshots 
 
 
