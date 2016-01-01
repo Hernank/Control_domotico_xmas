@@ -11,7 +11,7 @@ Tenemos el control de una casa el cual entre varias de las cosas a controlar son
   * **Ambiente climatizado por medio de un sensor de temperatura** (Teniendo como entrada un sensor de temperatura permitira procesar este dato para habilitar o inhabilitar 2 ventiladores a diferente temperatura respecto al otro, es decir el primer ventilador se enciende a una temperatura x , y el segundo ventilador se habilita a una temperaura mayor a x)
   * **Encendido de un arbol de navidad** (Se puede encender un arbol de navidad por medio de una aplicacion  )
   * **Encendido de la alarma al detectar intrusos** (Provisto de 2 sensores de contacto en 2 ventanas[en complementacion de una compuerta or 7432 solo habra  1 entrada al arduino] y otra sensor de contacto en el cerco electrico le permitiran al arduino encender la alarma en caso de que se quieran abrir las ventanas o se quiera burlar el cerco electrico )
-  * 
+  * Control de todos los actuadores desde una aplicacion web
 
 Proyecto arduino
 -----------
@@ -20,6 +20,7 @@ Proyecto arduino
   * [Password](http://playground.arduino.cc/uploads/Code/Password.zip).
   * [Keypad](http://playground.arduino.cc/uploads/Code/keypad.zip).
   * [HttpClient](https://github.com/amcewen/HttpClient/archive/2.2.0.zip). 
+
 Esto hara que funcione como webserver en la ip 192.168.0.20 puerto 80
 
 Proyecto django
