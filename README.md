@@ -1,5 +1,5 @@
 # Arduino_Uno_XMAS
-Proyecto orientado al control de casas inteligentes
+Proyecto orientado al control de casas inteligentes que funciona en conjunto de una tarjeta arduino uno, una tarjeta ethernet shield y una aplicacion django.
   
 
 
