@@ -1,0 +1,431 @@
+#include <b64.h>
+#include <HttpClient.h>
+
+
+/*
+  www.diymakers.es
+  by A.García & M.García
+  Crear servidor Web con Arduino
+  Tutorial en: http://diymakers.es/crear-servidor-web-con-arduino/
+*/
+
+#include <SPI.h>  //Importamos librería comunicación SPI
+#include <Ethernet.h>  //Importamos librería Ethernet
+
+/*
+  Config server local
+*/
+
+// Name of the server we want to connect to
+const char kHostname[] = "192.168.1.20";
+
+// Path to download (this is the bit after the hostname in the URL
+// that you want to download
+const char kPath[] = "/jasdso";
+// Number of milliseconds to wait without receiving any data before we give up
+const int kNetworkTimeout = 30*1000;
+// Number of milliseconds to wait if no data is available before trying again
+const int kNetworkDelay = 1000;
+//char serverdns[] = "www.google.com";    // name address for Google (using DNS)
+
+/////////////
+
+
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };//Ponemos la dirección MAC de la Ethernet Shield que está con una etiqueta debajo la placa
+IPAddress ip(192, 168, 1, 20); //Asingamos la IP al Arduino
+EthernetServer server(80); //Creamos un servidor Web con el puerto 80 que es el puerto HTTP por defecto
+
+int Alarma      = 3; //Pin del led 3
+int Ventilador1 = 4; //Pin del led 4
+int Ventilador2 = 5; //Pin del led 5
+
+int Radio1      = 6; //Pin del led 6
+
+int Lampara   = 7; //Pin del led 7
+int Foco      = 8; //Pin del led 8
+int Arbol     = 9; //Pin del led 9
+int Radio2    = 10; //Pin del led 10
+int Servos    = 11; //Pin del led 11
+int focopatio    = 12; //Pin del led 12
+int sensoresalarma    = 13; //Pin del led 13
+
+int leds[4]={Alarma,Ventilador1,Ventilador2,Radio1};
+//int leds[9]={Alarma,Ventilador1,Ventilador2,Radio1,Lampara,Foco,Arbol,Radio2,Servos};
+
+String estado = "OFF"; //Estado del Led inicialmente "OFF"
+bool getbolean(String valor){
+  if (valor=="True"){
+    return true;
+    }else{
+      if(valor=="False"){
+        return false;
+        }
+      
+      }
+  
+  }
+String getData(){
+  int str_len = (sizeof(leds)/sizeof(int)); 
+  Serial.println(str_len);
+ 
+  String data="";
+  for (int i = 0; i < str_len; i = i + 1) {
+    data+=digitalRead(leds[i]); 
+    Serial.print(".");
+    Serial.println(leds[i]);
+   
+  }
+   Serial.println("data:");
+  Serial.print(data);
+  return data;
+ 
+  }
+String  setData(String estadocadena){
+  Serial.print("Seteando");
+ 
+ Serial.println(estadocadena);
+
+
+  // Length (with one extra character for the null terminator)
+  
+  int str_len = (sizeof(leds)/sizeof(int))+1; 
+  Serial.println(str_len);
+  // Prepare the character array (the buffer) 
+  char char_array[str_len];
+
+  String nombre=split(estadocadena,',',2);
+  String nvalor=split(estadocadena,',',3);
+  String valor=split(nvalor,' ',0);
+  Serial.println("*"+nombre);
+  Serial.println("*"+valor);
+  if (nombre=="Alarma"){
+      Serial.println("Setear ventilador");
+    }
+  if (nombre=="Lampara"){Serial.println("Setear Lampara");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Servos"){Serial.println("Setear Servos");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Radio 2"){Serial.println("Setear radio 2");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Alarma"){Serial.println("Setear Alarma");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Radio 1"){Serial.println("Setear Radio 1");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Ventilador 2"){Serial.println("Ventilador arbol");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Arbol"){Serial.println("Setear Arbol");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Foco"){Serial.println("Setear Foco");digitalWrite(Lampara,getbolean(valor));}
+  if (nombre=="Vetilador 1"){Serial.println("Setear Vetilador 1");digitalWrite(Lampara,getbolean(valor));}
+
+  // Copy it over 
+  //estadocadena.toCharArray(char_array, str_len);
+  //for (int i = 0; i < str_len; i = i + 1) {
+  //  int j=char_array[i]- '0';
+ //   digitalWrite(leds[i],j);
+ //   Serial.println(char_array[i]);
+ // }
+   Serial.println("Seteado");
+   
+ // return estadocadena;
+ return "hola herna";
+  }
+ String split(String data, char separator, int index)
+{
+  int found = 0;
+  int strIndex[] = {0, -1};
+  int maxIndex = data.length()-1;
+
+  for(int i=0; i<=maxIndex && found<=index; i++){
+    if(data.charAt(i)==separator || i==maxIndex){
+        found++;
+        strIndex[0] = strIndex[1]+1;
+        strIndex[1] = (i == maxIndex) ? i+1 : i;
+    }
+  }
+
+  return found>index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
+String obtenerset(String cadena){  
+  String valorset="jaja";
+  return valorset;
+  }
+
+String getget(String cadenatotal){
+  
+  
+  int indicebusqueda= search("getdata", cadenatotal);
+  
+  if(indicebusqueda+1)
+  {
+    return ":*";
+    }
+  else
+   {
+    return "" ;
+    }
+  }
+String getset(String cadenatotal){
+  
+
+  Serial.println("cadenatotalset"+cadenatotal);
+  int indicebusqueda=search("setdata", cadenatotal);
+  Serial.println("mi indice: "+indicebusqueda);  
+  if(indicebusqueda+1)
+  {
+    String hola=cadenatotal;
+    String nuevo=split(hola,'/',2);
+    String nuevo2=split(hola,'/',3);
+    String valor=split(nuevo2,' ',0);
+    Serial.println(valor);
+    return nuevo+"-"+valor;
+    }
+  else
+  {
+    return "";
+    }
+  
+  }
+
+
+void setup()
+{
+  Serial.begin(9600);
+
+  // Inicializamos la comunicación Ethernet y el servidor
+  Ethernet.begin(mac, ip);
+  server.begin();
+  Serial.print("server esta en | ");
+  Serial.println(Ethernet.localIP());
+  //Establcer el modeo de trabajo de los pines
+  pinMode(Alarma, OUTPUT);
+  pinMode(Ventilador1, OUTPUT);
+  pinMode(Ventilador2, OUTPUT);
+  pinMode(Radio1, OUTPUT);
+  pinMode(Lampara, OUTPUT);
+  pinMode(Foco, OUTPUT);
+  pinMode(Arbol, OUTPUT);
+  pinMode(Radio2, OUTPUT);
+  pinMode(Servos, OUTPUT);
+  pinMode(focopatio, OUTPUT);
+  pinMode(sensoresalarma, INPUT);
+  Serial.print("iniciando");
+ 
+  /////////
+
+
+}
+
+
+
+int search(String key, String cadena) {
+  String mikey = key;
+  int posicion = cadena.indexOf(mikey); //Guardamos la posición de la instancia "LED=" a la variable 'posicion'
+  return posicion;
+}
+//String cadena = ""; //Creamos una cadena de caracteres vacía
+
+String getcadena(EthernetClient client) {
+  boolean currentLineIsBlank = true;
+  String cadena = ""; //Creamos una cadena de caracteres vacía
+
+  while (client.connected()) {
+    if (client.available()) {
+      char c = client.read();//Leemos la petición HTTP carácter por carácter
+
+      Serial.write(c);//Visualizamos la petición HTTP por el Monitor Serial
+      cadena.concat(c);//Unimos el String 'cadena' con la petición HTTP (c). De esta manera convertimos la petición HTTP a un String
+
+
+
+      //  if(cadena.substring(posicion)=="LED=ON")//Si a la posición 'posicion' hay "LED=ON"
+      // {
+      //   digitalWrite(led,HIGH);
+      //  estado="ON";
+      // }
+
+
+      //Cuando reciba una línea en blanco, quiere decir que la petición HTTP ha acabado y el servidor Web está listo para enviar una respuesta
+      if (c == '\n' && currentLineIsBlank) {
+
+        // Enviamos al cliente una respuesta HTTP
+        client.println("HTTP/1.1 200 OK");
+        client.println("Content-Type: text/html");
+        client.println();
+
+
+        break;
+      }
+    }
+
+  }
+  return cadena;
+
+}
+void loop()
+{
+  EthernetClient client = server.available(); //Creamos un cliente Web
+  //Cuando detecte un cliente a través de una petición HTTP
+  
+    if (client) {
+    //cadena = "";
+    Serial.println("new client");
+    Serial.println("");
+    boolean currentLineIsBlank = true; //Una petición HTTP acaba con una línea en blanco
+
+    Serial.print("====");
+    Serial.print("");
+    String cadena=getcadena(client);//seteo en cadena el texto de request
+    Serial.print(cadena);
+    Serial.print("buscare");
+    String valorget=getget(cadena);
+    String valorset=getset(cadena);   
+    Serial.print("ya busque"); 
+    Serial.print(valorget+valorset);
+    Serial.println("+");
+    if(valorget!=""){
+      String getdata=getData();
+      client.print("");
+      client.print(getdata);
+      // requesttolocal();
+    }
+    if(valorset!=""){
+      
+      // requesttolocal();
+       
+      //guardo en valorset el valor del set url ejm 110011
+     
+     // Serial.print("Es set<");
+      
+    //  client.print("Devolviendoo metodo set *");
+    //  client.print(valorset);
+    //  client.println("*");
+      Serial.print(valorset);
+      Serial.println(">");
+
+      String nuevovalorset=setData(valorset);
+      client.print("");
+      client.print(nuevovalorset);
+    }
+
+
+    //Cuando reciba una línea en blanco, quiere decir que la petición HTTP ha acabado y el servidor Web está listo para enviar una respuesta
+
+
+
+
+    //Página web en formato HTML
+    // client.println("<html>");
+    // client.println("<head>");
+    // client.println("</head>");
+    // client.println("<body>");
+    //client.println("<h1 align='center'>DIYMakers</h1><h3 align='center'>LED controlado por Servidor Web con Arduino</h3>");
+    //Creamos los botones. Para enviar parametres a través de HTML se utiliza el metodo URL encode. Los parámetros se envian a través del símbolo '?'
+    //client.println("<div style='text-align:center;'>");
+    //client.println("<button onClick=location.href='./?LED=ON\' style='margin:auto;background-color: #84B1FF;color: snow;padding: 10px;border: 1px solid #3F7CFF;width:65px;'>");
+    //client.println("ON");
+    //client.println("</button>");
+    //client.println("<button onClick=location.href='./?LED=OFF\' style='margin:auto;background-color: #84B1FF;color: snow;padding: 10px;border: 1px solid #3F7CFF;width:65px;'>");
+    //client.println("OFF");
+    //client.println("</button>");
+    //client.println("<br /><br />");
+    //client.println("<b>LED = ");
+    // client.print(estado);
+    // client.println("</b><br />");
+    //client.println("</b></body>");
+
+
+
+    //Dar tiempo al navegador para recibir los datos
+    delay(1);
+    client.stop();// Cierra la conexión
+  }
+}
+
+void httpRequest() {
+  Serial.print("Hare un request");
+}
+
+void getdatos() {
+  Serial.print("Getd datos");
+}
+
+void setdatos() {
+  Serial.print("Set datos ");
+}
+
+void requesttolocal() {
+  int err =0;
+  
+  EthernetClient c;
+  HttpClient http(c);
+  
+  err = http.get(kHostname,  8000, kPath, "MyUserAgent/1.0" );
+  if (err == 0)
+  {
+    Serial.println("startedRequest ok");
+
+    err = http.responseStatusCode();
+    if (err >= 0)
+    {
+      Serial.print("Got status code: ");
+      Serial.println(err);
+
+      // Usually you'd check that the response code is 200 or a
+      // similar "success" code (200-299) before carrying on,
+      // but we'll print out whatever response we get
+
+      err = http.skipResponseHeaders();
+      if (err >= 0)
+      {
+        int bodyLen = http.contentLength();
+        Serial.print("Content length is: ");
+        Serial.println(bodyLen);
+        Serial.println();
+        Serial.println("Body returned follows:");
+      
+        // Now we've got to the body, so we can print it out
+        unsigned long timeoutStart = millis();
+        char c;
+        // Whilst we haven't timed out & haven't reached the end of the body
+        while ( (http.connected() || http.available()) &&
+               ((millis() - timeoutStart) < kNetworkTimeout) )
+        {
+            if (http.available())
+            {
+                c = http.read();
+                // Print out this character
+                Serial.print(c);
+               
+                bodyLen--;
+                // We read something, reset the timeout counter
+                timeoutStart = millis();
+            }
+            else
+            {
+                // We haven't got any data, so let's pause to allow some to
+                // arrive
+                delay(kNetworkDelay);
+            }
+        }
+      }
+      else
+      {
+        Serial.print("Failed to skip response headers: ");
+        Serial.println(err);
+      }
+    }
+    else
+    {    
+      Serial.print("Getting response failed: ");
+      Serial.println(err);
+    }
+  }
+  else
+  {
+    Serial.print("Connect failed: ");
+    Serial.println(err);
+  }
+  http.stop();
+
+  // And just stop, now that we've tried a download
+  //while(1);
+
+ Serial.print("ajajjaja");
+
+}
+

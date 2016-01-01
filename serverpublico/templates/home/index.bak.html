@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"><a  id="actualizar" style="color: white;text-decoration: none">Smart Security</a></span>
+
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Sensores</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Actuadores</a>
+      <a href="#fixed-tab-3" class="mdl-layout__tab">Settings</a>
+    </div>
+  </header>
+   <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Smart Security</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Mi cuenta</a>
+      <a class="mdl-navigation__link" href="">Salir</a>
+    </nav>
+  </div>
+
+
+  
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content">
+      <!-- Your content goes here -->
+      <div class="mdl-grid">
+		<br>
+      	<div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop ">
+      		<br><br>
+      		<!-- Slider with Starting Value -->
+      		<input class="mdl-slider mdl-js-slider" type="range"
+      		min="0" max="100" value="25" tabindex="0">
+     	</div>   
+
+     	<div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop ">
+     		<br><br>
+     		<label>Temperatura</label>
+     	</div>   
+
+     	<div class="mdl-cell mdl-cell--1-col mdl-cell--middle mdl-cell--2-col-desktop"></div>
+		<div class="mdl-cell mdl-cell--1-col mdl-cell--middle mdl-cell--3-col-tablet mdl-cell--1-col-desktop">
+			<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+				<input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+				<span class="mdl-radio__label"></span>
+			</label>
+     	</div>   
+		<div class="mdl-cell mdl-cell--2-col mdl-cell--middle mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
+			<br><br>
+			<label for="" style="margin-top: 32px;">Sensores de alarma</label>
+			
+		</div>
+     	
+
+
+      </div>
+
+
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"  >
+      	<br>
+      	<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet " >
+      			<label for="alarmaas" class="mdl-switch mdl-js-switch alarma">
+      				<input type="checkbox" id="alarma" class="mdl-switch__input " >
+      				<span class="mdl-switch__label">Alarma </span>
+      			</label>
+      			<hr>
+      		</div>   
+      		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="ventilador1" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="ventilador1" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Ventilador 1</span>
+      			</label>
+      			<hr>
+      		</div>   
+
+			<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="ventilador2" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="ventilador2" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Ventilador 2</span>
+      			</label>
+      			<hr>
+      		</div>   
+      		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="radio1" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="radio1" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Radio 1</span>
+      			</label>
+      			<hr>
+      		</div>
+
+
+	
+      		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="lampara" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="lampara" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Lampara </span>
+      			</label>
+      			<hr>
+      		</div>   
+			
+
+      		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="foco" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="foco" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Foco </span>
+      			</label>
+      			<hr>
+      		</div>
+			
+			
+			<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="arbol" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="arbol" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Arbol</span>
+      			</label>
+      			<hr>
+      		</div>   
+			
+
+
+			<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="radio2" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="radio2" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Radio 2 </span>
+      			</label>
+      			<hr>
+      		</div>   
+			
+			<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+      		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+      			<label for="servo" class="mdl-switch mdl-js-switch">
+      				<input type="checkbox" id="servo" class="mdl-switch__input">
+      				<span class="mdl-switch__label">Servo </span>
+      			</label>
+      			<hr>
+      		</div>   
+			
+			
+
+			
+
+
+
+
+       	</div>	
+		    	
+
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content">micontent3<!-- Your content goes here --></div>
+    </section>
+
+  </main>
+  <footer class="mdl-mini-footer mdl-cell--hide-tablet">
+  	<div class="mdl-mini-footer__left-section ">
+
+  		<ul class="mdl-mini-footer__link-list ">
+  		<li><a href="#">Ayuda</a></li>
+  			<li><a href="#">Quienes somos</a></li>
+  			<li><a href="#">User Agreement</a></li>
+  		</ul>
+  	</div>
+
+  </footer>
+
+
+</div>
+
+<script type="text/javascript">
+
+	function setvar(nombre,valor){
+		alert(nombre+ "  -  "+valor );
+
+		$.ajax({
+			data:{'nombre':nombre,
+			'valor':valor,
+			
+			},
+			url:'/setvalor/',
+			type:'get',
+			success: function(data){
+				alert("Excelente se ha encendido "+data['mensaje'])				
+				
+			}
+		}
+		);
+
+	}
+
+
+	$('input[type="checkbox"]').bind('change',function() {
+		idcheckbox=this.id;
+		check=$(this).is(':checked');	
+    	alert ("The element with id " + idcheckbox +" changed."+check);
+    	setvar(idcheckbox,check);
+	});
+	$('#actualizar').on('click', function(e){
+		
+		$( '.alarma' ).attr( "checked", true );
+		alert($('.arbol').id);
+        alert('Actualizandoo');
+        $.ajax({
+			data:{
+			},
+			url:'/getvalores/',
+			type:'get',
+			success: function(data){
+				alert("Excelente se ha actualizado ");	
+				$('#arbol').prop('checked', data['ventilador1']);			
+				
+			}
+		}
+		);
+        		
+    	//var username= $("#username").val(); 		
+	});
+
+	
+	</script>
+
+	</body>
+
+
+</html>

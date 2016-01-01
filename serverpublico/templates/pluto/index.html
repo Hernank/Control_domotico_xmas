@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+  {% load static from staticfiles %}  	
+  	<meta charset="utf-8">
+    <meta name="description" content="Responsive Bootstrap Landing Page Template">
+    <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Grayrids">
+		<title>SMART SECURITY - El control de tu hogar a cualquier momento y en cualquier lugar.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "favicon.ico" %}" />
+    <link href="{% static "pluto/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{% static "pluto/" %}fonts/font-awesome.min.css" type="text/css" media="screen">
+    <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+    <link href="{% static "pluto/css/material.min.css" %}" rel="stylesheet">
+    <link href="{% static "pluto/css/ripples.min.css" %}" rel="stylesheet">
+    <link href="{% static "pluto/css/main.css" %}" rel="stylesheet">
+    <link href="{% static "pluto/css/responsive.css" %}" rel="stylesheet">
+    <link href="{% static "pluto/css/animate.min.css" %}" rel="stylesheet">
+  </head>
+
+  <body>
+
+     	
+  	<div class="content-wrap">
+     <header class="hero-area" id="home">
+      
+      <div class="container">
+          <div class="col-md-12">
+
+            <div class="navbar navbar-inverse sticky-navigation navbar-fixed-top" role="navigation" data-spy="affix" data-offset-top="200">
+              <div class="container">
+                <div class="navbar-header">
+                  <a class="logo-left " href="{% url 'inicio' %}"><i class="mdi-image-timelapse"></i>SMART SECURITY</a>
+                </div>
+                <div class="navbar-right">
+                              
+                </div>
+              </div>
+            </div>
+        </div>        
+        <div class="contents text-right">
+          <h1 class="wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">SMART SECURITY - El control de tu hogar a cualquier momento y en cualquier lugar.</h1>
+          <p class="wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="400ms">3JCORP</p>
+          
+          <a href="{% url 'index' %}" class="btn btn-lg btn-border wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">Ingresar</a>
+        </div>   
+    </header>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h1 class="section-title wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="100ms">Caracteristicas</h1>
+          <h2 class="section-subtitle wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="400ms">Que garantizamos </h2>
+        </div>
+        <div class="row">
+
+          <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="features">
+              <div class="icon">
+                <i class="mdi-action-settings"></i>
+              </div>
+              <div class="features-text">
+                <h4>Diseño adaptable</h4>
+                <p>
+                  Visualiza nuestro sitio desde cualquier dispositivo con una incereible experiencia de usuario.
+                </p>
+              </div>
+             </div>
+          </div>
+
+
+          <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
+            <div class="features">
+              <div class="icon">
+                <i class="mdi-action-done-all"></i>
+              </div>
+              <div class="features-text">
+                <h4>Escalable</h4>
+                <p>
+                  Capacidad de agregar mas dispoitivos y controlarlos desde cualquier lugar y cualquier dispositivo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+            <div class="features">
+              <div class="icon">
+                <i class="mdi-image-blur-linear"></i>
+              </div>
+              <div class="features-text">
+                <h4>Ahorro de energia</h4>
+                <p>
+                  Administra el consumo de energia de los electrodomesticos con sensores electronicos.
+                </p>
+              </div>
+            </div>
+          </div>            
+
+
+          
+          
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2 class="section-title">​​​​​​​​​Contáctanos</h2>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="info">
+                  <div class="icon">
+                    <i class="mdi-maps-map"></i>
+                  </div>
+                  <h4>Location</h4>
+                  <p>Ecuador, El Oro, Machala</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="info">
+                  <div class="icon">
+                    <i class="mdi-content-mail"></i>
+                  </div>
+                  <h4>Email</h4>
+                  <p>admin@g3jcorp.com</p>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="col-md-6 col-sm-6">
+                <div class="info">
+                  <div class="icon">
+                    <i class="mdi-action-settings-phone"></i>
+                  </div>
+                  <h4>Numero Telefonico</h4>
+                  <p>0989 108 982</p>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="info">
+                  <div class="icon">
+                    <i class="mdi-action-thumb-up"></i>
+                  </div>
+                  <h4>Social Media</h4>
+                  <p>@3jcorp</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2 class="section-title">Amamos lo que hacemos</h2>
+            <!-- Form -->
+            <form class="contact-form" role="form" method="post">
+              <i class="mdi-action-account-box"></i>
+              <input type="text" class="form-control" name="name" placeholder="Name">
+            
+              <i class="mdi-content-mail"></i>
+              <input type="email" class="form-control" name="EMAIL" placeholder="Email">                  
+                                    
+              <textarea class="form-control" placeholder="Message" rows="4"></textarea>              
+              <button type="submit" id="submit" class="btn btn-lg btn-primary">Send Massage</button>
+              <div id="success" style="color:#3F51B5;">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>    
+
+    <div class="map-area">      
+      <div class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24572.84978943678!2d-79.93293736544207!3d-3.2552975604397054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sec!4v1450657864912" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+       </div>
+    </div>
+
+    <section id="footer">
+       
+      <!-- Go to Top Link -->
+      <a href="#home" class="btn btn-primary back-to-top">
+      <i class=" mdi-hardware-keyboard-arrow-up"></i>
+      </a>
+    </section> 
+
+    <section id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="copyright-text">
+             © SMART SECURITY 2015 Todos los derechos reservados. Diseñado y deesarrollado por   
+              <a href="#">
+                3JCORP
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>     
+    </div>  
+		
+
+    <script src="{% static "pluto/js/jquery-2.1.4.min.js" %}"></script>
+    <script src="{% static "pluto/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "pluto/js/ripples.min.js" %}"></script>
+    <script src="{% static "pluto/js/material.min.js" %}"></script>
+    <script src="{% static "pluto/js/wow.js" %}"></script>
+    <script src="{% static "pluto/js/jquery.mmenu.min.all.js" %}"></script> 
+    <script src="{% static "pluto/js/count-to.js" %}"></script>   
+    <script src="{% static "pluto/js/jquery.inview.min.js" %}"></script>     
+    <script src="{% static "pluto/js/main.js" %}"></script>
+    <script src="{% static "pluto/js/classie.js" %}"></script>
+    <script src="{% static "pluto/js/jquery.nav.js" %}"></script>      
+    <script src="{% static "pluto/js/smooth-on-scroll.js" %}"></script>
+    <script src="{% static "pluto/js/smooth-scroll.js" %}"></script>
+    
+
+    <script>
+        $(document).ready(function() {
+            // This command is used to initialize some elements and make them work properly
+            $.material.init();
+        });
+    </script>
+
+  </body>
+
+</html>

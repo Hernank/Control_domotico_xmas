@@ -12,6 +12,12 @@ urlpatterns = patterns('',
     miurl('setdata/(.+)'),
     miurl('getdata/'),
     miurl('setsocket/(.+)'),
+    miurl('setvalor/'),
+    url(r'^dashboard/$', 'apps.home.views.dashboard',name='index'),
+    url(r'^$', 'apps.home.views.inicio',name='inicio'),
+    url(r'^micuenta/$', 'apps.home.views.micuenta',name='micuenta'),
+    
+  
     
     
 )

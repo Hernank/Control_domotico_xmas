@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <title>Document</title>
+  {% load static from staticfiles %}
+  <link rel="stylesheet" href="{% static "material.indigo-pink.min.css" %}">
+ <link rel="shortcut icon" type="image/x-icon" href="{% static "favicon.ico" %}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="{% static "material.min.js" %}"></script>
+  <link rel="stylesheet" href="{% static "icon.css" %}">
+  <script src="{% static "jquery.min.js" %}"></script>
+  
+</head>
+<body>
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title"><a  href="{% url 'index' %}" id="actualizar" style="color: white;text-decoration: none">Smart Security</a></span>
+
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Sensores</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Actuadores</a>
+      <a href="#fixed-tab-3" class="mdl-layout__tab">Settings</a>
+    </div>
+  </header>
+   <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Smart Security</span>
+    <hr>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="{% url 'inicio' %}">Mi cuenta</a>
+      <a class="mdl-navigation__link" href="{% url 'inicio' %}">Salir</a>
+    </nav>
+  </div>
+
+
+  
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content">
+      <!-- Your content goes here -->
+      <div class="mdl-grid">
+		  <br>
+        	<div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop ">
+      		<br><br>
+      		<!-- Slider with Starting Value -->
+      		<input class="mdl-slider mdl-js-slider" type="range"
+      		min="0" max="100" value="25" tabindex="0">
+     	</div>   
+
+     	<div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--3-col-desktop ">
+     		<br><br>
+     		<label>Temperatura {{ sensores.temperatura }}</label>
+     	</div>   
+
+     	<div class="mdl-cell mdl-cell--1-col mdl-cell--middle mdl-cell--2-col-desktop"></div>
+		<div class="mdl-cell mdl-cell--1-col mdl-cell--middle mdl-cell--3-col-tablet mdl-cell--1-col-desktop">
+			<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+				<input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" {% if sensores.alarma %}checked
+          
+        {% endif %}>
+				<span class="mdl-radio__label"></span>
+			</label>
+     	</div>   
+		<div class="mdl-cell mdl-cell--2-col mdl-cell--middle mdl-cell--4-col-tablet mdl-cell--3-col-desktop">
+			<br><br>
+			<label for="" style="margin-top: 32px;">Sensores de alarma</label>
+			
+		</div>
+    
+    {% if sensores.mensajeerror %}
+      <label>{{ sensores.mensajeerror }}</label>
+    {% endif %}
+     	
+
+
+      </div>
+
+
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"  >
+      	<br>
+      	<div class="mdl-grid">
+
+          
+
+        {% for nombre,valor in valores.items %}
+             {{ value }}
+
+        <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet"></div>  
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet">
+        <label for="{{ nombre }}" class="mdl-switch mdl-js-switch ">
+              <input type="checkbox" id="{{ nombre }}" class="mdl-switch__input " {% if  valor%}
+                checked
+              {% endif %} >
+              <span class="mdl-switch__label">{{ nombre }} </span>
+            </label>
+        <hr>
+        </div> 
+        {% endfor %}
+			
+
+			
+
+
+
+
+       	</div>	
+		    	
+
+      </div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content">
+
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield ">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Lampara</label>
+            </div>
+          
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Servos</label>
+            </div>
+          
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Radio2</label>
+            </div>
+          
+        </div> 
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop" >
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Radio 1</label>
+            </div>
+          
+        </div>
+
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Ventilador 2</label>
+            </div>
+          
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Arbol</label>
+            </div>
+          
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Foco</label>
+            </div>
+          
+        </div>
+         <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktops">
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="sample1">
+              <label class="mdl-textfield__label" for="sample1">Ventilador 1</label>
+            </div>
+          
+        </div>
+        
+         <div class="mdl-cell mdl-cell--12-col mdl-cell--4-col-tablet mdl-cell--6-col-desktops">
+          
+            <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+          <i class="material-icons">send</i>
+        </button>
+          
+        </div>
+
+
+
+      </div>
+      
+
+        <!-- Simple Textfield -->
+      
+     
+      <!-- Your content goes here --></div>
+    </section>
+
+  </main>
+  <footer class="mdl-mini-footer mdl-cell--hide-tablet">
+  	<div class="mdl-mini-footer__left-section ">
+
+  		<ul class="mdl-mini-footer__link-list ">
+  		<li><a href="#">© SMART SECURITY 2015 Todos los derechos reservados. Diseñado y deesarrollado por 3JCORP</a></li>
+  			
+  		</ul>
+  	</div>
+
+  </footer>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+	function setvar(nombre,valor){
+		//alert(nombre+ "  -  "+valor );
+
+		$.ajax({
+			data:{'nombre':nombre,
+			'valor':valor,
+			
+			},
+			url:'/setvalor/',
+			type:'get',
+			success: function(data){
+        if(data['error']){
+          alert("HA OCURRIDO UN ERROR "+data['error']) 
+
+        }
+							
+				
+			}
+		}
+		);
+
+	}
+
+
+	$('input[type="checkbox"]').bind('change',function() {
+		idcheckbox=this.id;
+		check=$(this).is(':checked');	
+    	//alert ("The element with id " + idcheckbox +" changed."+check);
+    	setvar(idcheckbox,check);
+	});
+	$('#actualizar').on('click', function(e){
+		
+		      // alert("actuaizando") 		
+    	//var username= $("#username").val(); 		
+	});
+
+	
+	</script>
+
+	</body>
+
+
+</html>
